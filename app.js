@@ -13,17 +13,18 @@ const app = express();
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
-app.use(helmet());
-app.use(cors());
-app.use(compression());
-app.use(morgan('combined', { stream: accessLogStream }));
-app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
+
+app.use(helmet());
+app.use(cors());
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
+app.use(bodyParser.json());
 
 const diskStorage = multer.diskStorage({
     destination: (req, file, cb) => {
