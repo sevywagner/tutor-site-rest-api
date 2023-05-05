@@ -1,10 +1,20 @@
+const fs = require('fs');
+const path = require('path');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const mongoConnect = require('./util/database').mongoConnect;
+const helmet = require('helmet');
+const morgan = require('morgan');
 
 const app = express();
 
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+app.use(helmet());
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,6 +37,7 @@ app.use(multer({ storage: diskStorage }).single('file'));
 const authRoutes = require('./routes/auth');
 const notesRoutes = require('./routes/notes');
 const adminRoutes = require('./routes/admin');
+const compression = require('compression');
 
 app.use('/auth', authRoutes);
 app.use('/notes', notesRoutes);
