@@ -7,12 +7,14 @@ const multer = require('multer');
 const mongoConnect = require('./util/database').mongoConnect;
 const helmet = require('helmet');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
 app.use(helmet());
+app.use(cors());
 app.use(compression());
 app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
