@@ -8,6 +8,7 @@ const mongoConnect = require('./util/database').mongoConnect;
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
+const compression = require('compression');
 
 const app = express();
 
@@ -40,7 +41,6 @@ app.use(multer({ storage: diskStorage }).single('file'));
 const authRoutes = require('./routes/auth');
 const notesRoutes = require('./routes/notes');
 const adminRoutes = require('./routes/admin');
-const compression = require('compression');
 
 app.use('/auth', authRoutes);
 app.use('/notes', notesRoutes);
