@@ -1,0 +1,28 @@
+{
+  "name": "tutor-site-rest-api",
+  "version": "1.0.0",
+  "description": "rest api for my tutor business",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Severin Wagner",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "express-validation": "^4.1.0",
+    "express-validator": "^6.15.0",
+    "googleapis": "^118.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.2.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1"
+  }
+}
