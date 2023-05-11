@@ -1,0 +1,1 @@
+::1 - - [08/May/2023:16:10:34 +0000] "PUT /notes/upload HTTP/1.1" 201 63 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
